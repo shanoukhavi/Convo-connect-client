@@ -11,7 +11,8 @@ const MessageComponent = ({ message, user }) => {
 
   const sameSender = sender?._id === user?._id;
 
-  const timeAgo = moment(createdAt).fromNow();
+  // Format the creation time as "9:34 PM"
+  const formattedTime = moment(createdAt).format("h:mm A");
 
   return (
     <motion.div
@@ -56,10 +57,11 @@ const MessageComponent = ({ message, user }) => {
         })}
 
       <Typography variant="caption" color={"text.secondary"}>
-        {timeAgo}
+        {formattedTime}
       </Typography>
     </motion.div>
   );
 };
 
 export default memo(MessageComponent);
+
